@@ -53,32 +53,28 @@ if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or
 	b:Toggle("Tự Động",function(bool)
 		autofarm = bool
 	end)
-	local candies
-	b:Toggle("Farm kẹo ",function(bool)
-		candies = bool
-	end)
 	local speed
-	b:Slider("Tween Speed",{
-		min = 500; 
-		max = 2500;
+	b:Slider("Tốc Độ Di Chuyển Farm",{
+		Thấp Nhất = 500; 
+		Cao Nhất = 2500;
 		precise = false;
 		},function(speed)
 		getgenv().speed = speed
 	end)
 	local scrollfarm
-	b:Toggle("Scroll Sniper",function(bool)
+	b:Toggle("Nhặt Sách",function(bool)
 		scrollfarm = bool
 	end)
 	local jinfarm
-	b:Toggle("JinFarm (instakill)",function(bool)
+	b:Toggle("Farm Vĩ Thú",function(bool)
 		jinfarm = bool
 	end)
 	local RANKUP
-	b:Toggle("AutoRank",function(bool)
+	b:Toggle("Tự Động Lên Rank",function(bool)
 		RANKUP = bool
 	end)
 
-	local d = w:CreateFolder("Quests Maker")
+	local d = w:CreateFolder("Nhiện Vụ Hàng Ngày")
 	d:Button("Rushs",function()
 		for i = 1,300 do
 			game.Players.LocalPlayer.Character.combat.update:FireServer("rushw")
@@ -105,7 +101,7 @@ if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or
 			wait(.3)
 		end
 	end)
-	d:Button("TP TrainLog",function()
+	d:Button("Dịch Chuyển tới TrainLog",function()
 		toTarget(player.Character.HumanoidRootPart.Position,workspace.npc.logtraining:FindFirstChild("HumanoidRootPart").Position,CFrame.new(game:GetService("Workspace").npc.logtraining:FindFirstChild("HumanoidRootPart").Position))
 	end)
 
@@ -266,21 +262,21 @@ if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or
 	end)
 end
 if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or game.PlaceId == akatsukiplace or game.PlaceId == forestplace then
-    local g = w:CreateFolder("Infinite Mode")
-	g:Label("Enable your mode and setup when charge chakra (not max)",{
+    local g = w:CreateFolder("Bật Mode(C,Z) Vô Hạn")
+	g:Label("Bật Mode trước khi bật.",{
 		TextSize = 15;
 		TextColor = Color3.fromRGB(255,255,255); 
 		BgColor = Color3.fromRGB(247, 95, 28);
 	}) 
     local when = 100000
-    g:Slider("When charge(NOT MAX)",{
-        min = 30000; 
-        max = 200000; 
+    g:Slider("Khi charge(Không Max)",{
+        Thấp Nhất = 30000; 
+        Cao Nhất = 200000; 
         precise = false;
     },function(z)
         when = z
     end)    
-    g:Button("InfiniteMode",function()
+    g:Button("Bật",function()
         local mode = game.Players.LocalPlayer.Character.combat.mode
         local copy = mode:Clone()
         copy.Parent = mode.Parent
@@ -311,12 +307,12 @@ if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or
             end
         end)
     end)
-    g:Button("Disable InfMode",function()
+    g:Button("Tắt",function()
         player.Character:BreakJoints()
     end)
 end
 if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or game.PlaceId == akatsukiplace or game.PlaceId == forestplace then
-    local h = w:CreateFolder("Auto Chakra")
+    local h = w:CreateFolder("Tự Động Chakra")
 	h:Label("Setup when charge chakra (also max)",{
 		TextSize = 16;
 		TextColor = Color3.fromRGB(255,255,255); 
@@ -365,7 +361,7 @@ if villageplace or game.PlaceId == trainingplace or game.PlaceId == rainplace or
             end
         end
     end)
-	h:Label("Dont use INFMODE and INFCHAKRA together",{
+	h:Label("Không sử dụng Vô Hạn Mode và Vô Hạn Chakra Cùng Một Lúc!",{
 		TextSize = 15;
 		TextColor = Color3.fromRGB(255,255,255); 
 		BgColor = Color3.fromRGB(247, 95, 28);
@@ -622,19 +618,14 @@ if game.PlaceId == menuplace then
 end
 
 local f = w:CreateFolder("Misc")
-f:Box("Teleport to PS","string",function(tpps)
+f:Box("Dịch Chuyển Đến SVV","string",function(tpps)
     game.Players.LocalPlayer.startevent:FireServer("teleporttoprivate", tpps)
 end)
-f:Label("made by reav#2966 | ver 4",{
+f:Label("Việt Hóa Bởi Bằng",{
     TextSize = 15;
     TextColor = Color3.fromRGB(255,255,255); 
     BgColor = Color3.fromRGB(247, 95, 28);
 }) 
-f:Label("https://discord.gg/aDRStgw",{
-    TextSize = 17;
-    TextColor = Color3.fromRGB(255,255,255); 
-    BgColor = Color3.fromRGB(247, 95, 28); 
-}) 
-f:Button("Copy Discord Link",function()
-    setclipboard("https://discord.gg/aDRStgw")
+f:Button("Copy Facebook Link",function()
+    setclipboard("https://www.facebook.com/cu.owls")
 end)
